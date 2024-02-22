@@ -3,28 +3,33 @@
 <% @movie.errors.full_messages.each do |message| %>
   <p style="color: red;"><%= message %></p>
 <% end %>
-
 <!--<form action="<%#= new_movie_path %>" method="post" data-turbo="false">
   <input name="authenticity_token" value="<%#= form_authenticity_token %>" type="hidden">-->
-<%= form_with(url: movies_path(@movie), data:{turbo: false}) do %>
+<!--
+    form_with(model: @post, local: true) binds the form to the @post instance.
+    It automatically determines whether to create a new post or update an existing one based on @post. If @post is a new record (not saved in the database), it will send a POST request to the appropriate route. If @post is an existing record, it will send a PUT/PATCH request to update that record.
+-->
+<!--form builder object.-->
+<%= form_with(model: @movie, data: { turbo: false }) do |form| %>
+
   <div>
     <%#= label_tag "Title" %>  <!--create (for="Title")--> 
-    <%= label_tag :title %>
+    <%= form.label :title %>
 
-    <!--<input type="text" id="title_box" name="query_title" value="<%#= @the_movie.title %>">-->
-    <%= text_field_tag :title, @movie.title %>
+<!--    <input type="text" id="title_box" name="query_title" value="<%# #= @the_movie.title %>">-->
+    <%= form.text_field :title %>
   </div>
 
   <div>
-    <%= label_tag :description %>
+    <%= form.label :description %>
 
-    <!--<textarea id="description_box" name="query_description" rows="3"><%#= @the_movie.description %></textarea>-->
-    <%= text_area_tag :description, @movie.description, { rows: 3} %>
+<!--    <textarea id="description_box" name="query_description" rows="3"><%# #= @the_movie.description %></textarea>-->
+    <%= form.text_area :description, { rows: 3 } %>
   </div>
 
   <!--<button>
     Create Movie
   </button>-->
-  <%= button_tag "Create Movie" %>
+  <%= form.button%>
   <!--</form>-->
 <% end %>
