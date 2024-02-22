@@ -4,11 +4,19 @@
 <hr>
 <table>
   <tr>
-  <th>ID</th>
-  <th>Name</th>
-  <th>DOB</th>
-  <th>Updated_at</th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>DOB</th>
+    <th>Updated_at</th>
+    <th></th>
   </tr>
   <%= @directors.each do |director| %>
+    <tr>
+      <td><%= director.id %></td>
+      <td><%= director.name %></td>
+      <td><%= director.dob.strftime("%m/%d/%Y") %></td>
+      <td><%= director.updated_at.strftime("%m/%d/%Y") %></td>
+      <td><%= link_to "Show detail", director_path(director.id) %></td>
+    </tr>
   <% end %>
 </table>

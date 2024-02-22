@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+
     @movies = Movie.all.order({ :created_at => :desc })
 
     respond_to do |format|

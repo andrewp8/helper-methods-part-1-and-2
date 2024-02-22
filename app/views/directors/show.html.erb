@@ -1,0 +1,9 @@
+<h1>Director #<%= @director.id %></h1>
+<ul>
+  <li><%= link_to "Edit", edit_director_path(@director) %></li>
+  <li><%= link_to "Delete", director_path(@director), method: :delete, data: { turbo_method: :delete, confirm: "Are you sure?" } %></li>
+</ul>
+<ol>
+<li>Name: <%= @director.name %></li>
+<li>Date of birth: <%= @director.dob.strftime("%m/%d/%Y") %></li>
+</ol>

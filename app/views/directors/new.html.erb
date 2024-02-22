@@ -1,0 +1,19 @@
+<%= @director.errors.full_messages.each do |msg| %>
+  msg
+<% end %>
+<%= form_with(model: @director, data:{ turbo: false }) do |form| %>
+  <div>
+    <%= form.label :name %>
+  </div>
+  <div>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :dob %>
+  </div>
+  <div>
+    <%= form.date_field :dob %>
+  </div>
+  <%= form.submit "test" %>
+<% end %>
+

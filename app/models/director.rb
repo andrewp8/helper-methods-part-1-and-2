@@ -9,4 +9,6 @@
 #  updated_at :datetime         not null
 #
 class Director < ApplicationRecord
+  validates :name, presence: true
+  validates :dob, presence: true
 end
